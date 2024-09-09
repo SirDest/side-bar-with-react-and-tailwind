@@ -1,5 +1,5 @@
 import "./App.css";
-import SideBar from "./components/SideBar";
+import SideBar, { SideBarItem } from "./components/SideBar";
 
 import {
   LifeBuoy,
@@ -11,12 +11,14 @@ import {
   LayoutDashboard,
   Settings,
 } from "lucide-react";
-import SideBarItem from "./components/SideBarItem";
+import { useState } from "react";
 
 function App() {
+  const [expanded, setExpanded] = useState(true);
+
   return (
     <main>
-      <SideBar>
+      <SideBar expanded={expanded} setExpanded={setExpanded}>
         <SideBarItem
           icon={<LayoutDashboard size={20} />}
           text='Dashboard'
@@ -27,7 +29,7 @@ function App() {
         <SideBarItem icon={<Boxes size={20} />} text='Inventory' />
         <SideBarItem icon={<Package size={20} />} text='Orders' />{" "}
         <SideBarItem icon={<Receipt size={20} />} text='Billings' />
-        <SideBarItem icon={<Settings size={20} />} text='Settings' />
+        <SideBarItem icon={<Settings size={20} />} text='Settings' alert />
         <SideBarItem icon={<LifeBuoy size={20} />} text='Help' />
       </SideBar>
     </main>
